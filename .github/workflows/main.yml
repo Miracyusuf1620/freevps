@@ -1,5 +1,9 @@
 name: Cl By Miraç
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      NGROK_AUTH_TOKEN:
+        description: 'CRD Kodunuzu Giriniz'
 jobs:
   build:
     runs-on: windows-latest
@@ -10,8 +14,6 @@ jobs:
       run: Expand-Archive ngrok.zip
     - name: Hesaba Giriliyor
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
-      env:
-        NGROK_AUTH_TOKEN: ${{ github.event.inputs.authcode }}
     - name: Enable TS
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
