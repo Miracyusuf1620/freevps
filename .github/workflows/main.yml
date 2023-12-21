@@ -16,7 +16,7 @@ jobs:
     #ngrok config add-authtoken 2Zdr9J5XYvQU3MqPKmmIDNzTA2J_2iDCGVHmTvzEHVM8oaAG9
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
-       NGROK_AUTH_TOKEN: ${{ github.event.inputs.NGROK_AUTH_TOKEN }
+       NGROK_AUTH_TOKEN: ${{ github.event.inputs.NGROK_AUTH_TOKEN }}
     - name: Enable TS
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
