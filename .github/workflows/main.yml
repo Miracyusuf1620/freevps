@@ -5,7 +5,7 @@ on:
       NGROK_AUTH_TOKEN:
         description: 'Ngrok Auth Tokeninizi Girin'
       Password:
-      description: 'Windows Şifrenizi girin'
+        description: 'Windows Şifrenizi girin'
 jobs:
   build:
     runs-on: windows-latest
@@ -22,7 +22,10 @@ jobs:
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText $ENV:Password -Force)
-    env: ${{ github.event.inputs.Password }}
+    - run: Set-LocalUser -Name "runneradmin"
+    - run: Set-LocalUser -Password $Env:Password
+      env:
+         Password: ${{ github.event.inputs.Password }}
+      
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
