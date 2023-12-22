@@ -20,10 +20,9 @@ jobs:
       env:
        NGROK_AUTH_TOKEN: ${{ github.event.inputs.NGROK_AUTH_TOKEN }}
     - name: Kurulum Yapılıyor
-      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-    - name: Şifre Kaydediliyor
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText $Env:Password -Force)
       env:
          Password: ${{ github.event.inputs.Password }}
