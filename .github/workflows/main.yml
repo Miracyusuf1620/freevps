@@ -4,10 +4,12 @@ on:
     inputs:
       NGROK_AUTH_TOKEN:
         description: 'Ngrok Auth Tokeninizi Girin'
+        required: true
       Password:
         description: 'Windows Şifrenizi girin'
+        required: true
 jobs:
-  build:
+  Kurulum:
     runs-on: windows-latest
     steps:
     #https://netix.dl.sourceforge.net/project/xampp/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe
