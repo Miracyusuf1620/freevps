@@ -13,21 +13,20 @@ jobs:
     #https://netix.dl.sourceforge.net/project/xampp/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe
     - name: İndiriliyor
       run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-    - name: İndiriliyor
-      run: Invoke-WebRequest https://netix.dl.sourceforge.net/project/xampp/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe
     - name: Dosya Çıkartılıyor
       run: Expand-Archive ngrok.zip
     - name: Hesaba Giriliyor
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
        NGROK_AUTH_TOKEN: ${{ github.event.inputs.NGROK_AUTH_TOKEN }}
-    - name: Enable TS
+    - name: Kurulum Yapılıyor
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+    - name: Şifre Kaydediliyor
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText $Env:Password -Force)
       env:
          Password: ${{ github.event.inputs.Password }}
       
-    - name: Create Tunnel
+    - name: Tünel Oluşturuluyor
       run: .\ngrok\ngrok.exe tcp 3389
