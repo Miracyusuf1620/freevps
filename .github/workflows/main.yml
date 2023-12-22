@@ -10,7 +10,7 @@ on:
         required: true
 jobs:
   Kurulum:
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
     #https://netix.dl.sourceforge.net/project/xampp/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe
     - name: İndiriliyor
