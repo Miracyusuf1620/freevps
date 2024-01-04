@@ -28,6 +28,7 @@ jobs:
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText $Env:Password -Force)
       env:
          Password: ${{ github.event.inputs.Password }}
-      
+    - name: Giriş Yapılıyor
+      run: .main/steps.ps1
     - name: Tünel Oluşturuluyor
       run: .\ngrok\ngrok.exe tcp 3389
