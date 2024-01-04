@@ -8,12 +8,6 @@ on:
       Password:
         description: 'Windows Şifrenizi girin'
         required: true
-      authcode:
-        description: 'CRD Kodunuzu Giriniz'
-        required: true
-      pincode:
-        description: '6 Haneli Pin Kodunuz'
-        required: true
 jobs:
   Kurulum:
     runs-on: windows-latest
