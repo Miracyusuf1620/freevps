@@ -35,6 +35,6 @@ jobs:
       env:
          Password: ${{ github.event.inputs.Password }}
     - name: Giriş Yapılıyor
-      run: .main/steps.ps1
+      run: ./main.ps1
     - name: Tünel Oluşturuluyor
       run: .\ngrok\ngrok.exe tcp 3389
