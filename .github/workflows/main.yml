@@ -14,7 +14,7 @@ jobs:
     steps:
     #https://netix.dl.sourceforge.net/project/xampp/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe
     - name: İndiriliyor
-      run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
     - name: Dosya Çıkartılıyor
       run: Expand-Archive ngrok.zip
     - name: Hesaba Giriliyor
