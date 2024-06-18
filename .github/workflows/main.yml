@@ -12,10 +12,13 @@ jobs:
   Kurulum:
     runs-on: windows-latest
     steps:
-    #https://netix.dl.sourceforge.net/project/xampp/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe
     - name: İndiriliyor
-      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+      run: Invoke-WebRequest https://server7.dosya.co/cgi-bin/azcl9.cgi/ehjv7tve53crkmvwb7xqewbogwdhybrp7cuudesoge/winrar-x64-701.zip
     - name: Dosya Çıkartılıyor
+      run: Expand-Archive winrar-x64-701.zip
+    - name: İndiriliyor (1)
+      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+    - name: Dosya Çıkartılıyor (1)
       run: Expand-Archive ngrok.zip
     - name: Hesaba Giriliyor
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
