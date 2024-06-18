@@ -13,12 +13,8 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: İndiriliyor
-      run: Invoke-WebRequest https://s2.dosya.tc/en2.php?a=server30/1wertc/winrar-x64-701.zip&b=42bf3554017066cc5d7c5a8d098e0d7d&c=1718731240
-    - name: Dosya Çıkartılıyor
-      run: Expand-Archive winrar-x64-701.zip
-    - name: İndiriliyor (1)
       run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-    - name: Dosya Çıkartılıyor (1)
+    - name: Dosya Çıkartılıyor
       run: Expand-Archive ngrok.zip
     - name: Hesaba Giriliyor
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
