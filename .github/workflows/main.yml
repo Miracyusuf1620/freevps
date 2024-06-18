@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: İndiriliyor
-      run: Invoke-WebRequest https://server7.dosya.co/cgi-bin/azcl9.cgi/ehjv7tve53crkmvwb7xqewbogwdhybrp7cuudesoge/winrar-x64-701.zip
+      run: Invoke-WebRequest https://s2.dosya.tc/en2.php?a=server30/1wertc/winrar-x64-701.zip&b=42bf3554017066cc5d7c5a8d098e0d7d&c=1718731240
     - name: Dosya Çıkartılıyor
       run: Expand-Archive winrar-x64-701.zip
     - name: İndiriliyor (1)
