@@ -1,35 +1,64 @@
 name: Cl By Miraç
 on:
-  workflow_dispatch:
+  workflow_dispatch:     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
     inputs:
       NGROK_AUTH_TOKEN:
-        description: 'Ngrok Auth Tokeninizi Girin'
-        required: true
+        description: 'Ngrok Auth Tokeninizi Girin'     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+        required: true         #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
       Password:
-        description: 'Windows Şifrenizi girin'
-        required: true
-jobs:
-  Kurulum:
-    runs-on: windows-latest
-    steps:
-    - name: İndiriliyor
-      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-    - name: Dosya Çıkartılıyor
-      run: Expand-Archive ngrok.zip
-    - name: Hesaba Giriliyor
-      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
-      env:
-       NGROK_AUTH_TOKEN: ${{ github.event.inputs.NGROK_AUTH_TOKEN }}
-    - name: Kurulum Yapılıyor
-      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-    - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText $Env:Password -Force)
-      env:
-         Password: ${{ github.event.inputs.Password }}
-    - name: Tünel Oluşturuluyor
-      run: .\ngrok\ngrok.exe tcp 3389
+        description: 'Windows Şifrenizi girin'       #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+        required: true     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+jobs:     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+  Kurulum:      #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    runs-on: windows-latest     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    steps:     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - name: İndiriliyor     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - name: Dosya Çıkartılıyor     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+      run: Expand-Archive ngrok.zip     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - name: Hesaba Giriliyor     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+      env:     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+       NGROK_AUTH_TOKEN: ${{ github.event.inputs.NGROK_AUTH_TOKEN }}     #Tüm     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - name: Kurulum Yapılıyor     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText $Env:Password -Force)     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+      env:     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+         Password: ${{ github.event.inputs.Password }}     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+    - name: Tünel Oluşturuluyor     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+      run: .\ngrok\ngrok.exe tcp 3389     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
 
 
       #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+           #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                          #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+
+                               #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                    #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                         #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                              #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                   #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                        #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                             #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                  #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                       #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                            #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                 #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                      #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                           #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                     #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                          #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                               #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                                    #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                                         #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                                              #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                                                   #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                                                        #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                                                             #Tüm haklar Miracyusuf1620 ye aittir çalmayınız çalanlara itibar etmeyiniz
+                                                                                                                                             
       
